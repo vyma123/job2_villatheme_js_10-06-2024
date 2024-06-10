@@ -98,7 +98,7 @@ function saveDataToLocal() {
   }
 }
 
-function numbersOnly(input) {
+function lettersOnly(input) {
   var regex = /[^a-zA-Z0-9]/g;
   input.value = input.value.replace(regex, '');
 }
@@ -281,7 +281,7 @@ function addTextareaField(data = {}) {
                         <div class="box_input">
                             <label for="rows">Rows</label>
                             <input
-                             onkeyup="numbersOnly(this)"
+                             onkeyup="lettersOnly(this)"
                              value="${
                                data.rows || '' // Giá trị mặc định là 1 nếu không có dữ liệu
                              }" type="number"  id="rows" name="rows2" required>
@@ -289,7 +289,7 @@ function addTextareaField(data = {}) {
                         <div class="box_input">
                             <label for="cols">Columns</label>
                             <input
-                             onkeyup="numbersOnly(this)"
+                             onkeyup="lettersOnly(this)"
                              value="${
                                data.cols || '' // Giá trị mặc định là 1 nếu không có dữ liệu
                              }" type="number" id="cols"  name="cols2" required>
