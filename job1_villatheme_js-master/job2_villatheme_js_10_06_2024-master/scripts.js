@@ -98,9 +98,30 @@ function saveDataToLocal() {
   }
 }
 
-function lettersOnly(input) {
+function numbersOnly(input) {
   var regex = /[^a-zA-Z0-9]/g;
   input.value = input.value.replace(regex, '');
+}
+
+function lettersOnly(input) {
+  // Remove leading numbers
+  if (/^[0-9]/.test(input.value)) {
+    input.value = input.value.replace(/^[0-9]+/, '');
+  }
+
+  if (
+    !/^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]/.test(input.value)
+  ) {
+    input.value = input.value.replace(
+      /^[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+/,
+      ''
+    );
+  }
+
+  input.value = input.value.replace(
+    /[^a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF]/g,
+    ''
+  );
 }
 
 function addInputField(data = {}) {
@@ -260,7 +281,7 @@ function addTextareaField(data = {}) {
                         <div class="box_input">
                             <label for="rows">Rows</label>
                             <input
-                             onkeyup="lettersOnly(this)"
+                             onkeyup="numbersOnly(this)"
                              value="${
                                data.rows || '' // Giá trị mặc định là 1 nếu không có dữ liệu
                              }" type="number"  id="rows" name="rows2" required>
@@ -268,7 +289,7 @@ function addTextareaField(data = {}) {
                         <div class="box_input">
                             <label for="cols">Columns</label>
                             <input
-                             onkeyup="lettersOnly(this)"
+                             onkeyup="numbersOnly(this)"
                              value="${
                                data.cols || '' // Giá trị mặc định là 1 nếu không có dữ liệu
                              }" type="number" id="cols"  name="cols2" required>
