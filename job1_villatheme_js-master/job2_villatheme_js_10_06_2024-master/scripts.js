@@ -103,26 +103,26 @@ function numbersOnly(input) {
   input.value = input.value.replace(regex, '');
 }
 
-function lettersOnly(input) {
-  // Remove leading numbers
-  if (/^[0-9]/.test(input.value)) {
-    input.value = input.value.replace(/^[0-9]+/, '');
-  }
+// function lettersOnly(input) {
+//   // xoa so o dau
+//   if (/^[0-9]/.test(input.value)) {
+//     input.value = input.value.replace(/^[0-9]+/, '');
+//   }
 
-  if (
-    !/^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]/.test(input.value)
-  ) {
-    input.value = input.value.replace(
-      /^[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+/,
-      ''
-    );
-  }
+//   if (
+//     !/^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]/.test(input.value)
+//   ) {
+//     input.value = input.value.replace(
+//       /^[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF]+/,
+//       ''
+//     );
+//   }
 
-  input.value = input.value.replace(
-    /[^a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF]/g,
-    ''
-  );
-}
+//   input.value = input.value.replace(
+//     /[^a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF]/g,
+//     ''
+//   );
+// }
 
 function addInputField(data = {}) {
   const typeOptions = [
